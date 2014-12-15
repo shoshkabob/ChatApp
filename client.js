@@ -1,4 +1,4 @@
-var client = new WebSocket("ws://localhost:3000");
+var client = new WebSocket("ws://shoshanah.princesspeach.nyc:3000");
 
 var usertext = document.querySelector("#usertext");
 var chat = document.querySelector(".chat");
