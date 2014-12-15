@@ -1,0 +1,31 @@
+{
+  "name": "ChatApp",
+  "version": "1.0.0",
+  "description": "Chat app",
+  "main": "chatroom.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoshkabob/ChatApp.git"
+  },
+  "keywords": [
+    "chat",
+    "app",
+    "WDI",
+    "GA"
+  ],
+  "author": "Shoshanah Weisinger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shoshkabob/ChatApp/issues"
+  },
+  "homepage": "https://github.com/shoshkabob/ChatApp",
+  "dependencies": {
+    "node-notifier": "^4.0.3",
+    "ws": "^0.6.3",
+    "wscat": "^1.0.0"
+  }
+}
