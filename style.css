@@ -17,11 +17,13 @@
 
 .umsg {
 	float: right;
+	display: block;
 }
 
 .uname {
 	font-weight: bold;
 	float: left;
+	display: block;
 }
 
 .input {
