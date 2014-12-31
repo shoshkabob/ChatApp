@@ -5,6 +5,7 @@ var chat = document.querySelector(".chat");
 var send = document.querySelector("#send");
 var username = window.prompt("What is your name?");
 var colors = [];
+var users = [];
 var x = 0;
 
 function User() {
@@ -14,6 +15,7 @@ function User() {
 		colors.unshift(newColor);
 		this.color = colors[0];
 	}
+	users.push(this);
 }
 
 client.addEventListener("open", function () {
@@ -37,14 +39,14 @@ client.addEventListener("open", function () {
 	client.addEventListener("message", function (stuff) {
 		var txt = JSON.parse(stuff.data);
 		var msg = txt.message;
-		var chatBlurb = document.createElement("p");
+		var chatBlurb = document.createElement("ul");
 		chatBlurb.setAttribute("class", "user");
 		chatBlurb.style.color = txt.color;
 		chat.appendChild(chatBlurb);
-		var chatUser = document.createElement("b");
+		var chatUser = document.createElement("p");
 		chatUser.setAttribute("class", "uname");
 		chatUser.innerHTML = txt.name + ": ";
-		var chatMsg = document.createElement("a");
+		var chatMsg = document.createElement("li");
 		chatMsg.setAttribute("class", "umsg");
 		chatMsg.innerHTML = msg;
 		chatBlurb.appendChild(chatUser);
@@ -68,6 +70,10 @@ client.addEventListener("open", function () {
 		if (txt.name === currentUser.name && msg === "**this user has been banned**") {
 			window.alert("Sorry, you used a banned word. You have been booted from the chat.");
 		}
+	});
+
+	client.addEventListener("close", function () {
+		clients.splice(clients.indexOf(currentUser), 1);
 	});
 });
 
