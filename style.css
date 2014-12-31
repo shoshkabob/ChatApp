@@ -15,16 +15,6 @@
 	overflow: auto;
 }
 
-.umsg {
-	float: right;
-	display: block;
-}
-
-.uname {
-	float: left;
-	display: block;
-}
-
 .input {
 	position: fixed;
 	bottom: 10;
