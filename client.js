@@ -39,14 +39,14 @@ client.addEventListener("open", function () {
 	client.addEventListener("message", function (stuff) {
 		var txt = JSON.parse(stuff.data);
 		var msg = txt.message;
-		var chatBlurb = document.createElement("ul");
+		var chatBlurb = document.createElement("div");
 		chatBlurb.setAttribute("class", "user");
 		chatBlurb.style.color = txt.color;
 		chat.appendChild(chatBlurb);
 		var chatUser = document.createElement("p");
 		chatUser.setAttribute("class", "uname");
 		chatUser.innerHTML = txt.name + ": ";
-		var chatMsg = document.createElement("li");
+		var chatMsg = document.createElement("p");
 		chatMsg.setAttribute("class", "umsg");
 		chatMsg.innerHTML = msg;
 		chatBlurb.appendChild(chatUser);

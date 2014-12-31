@@ -10,7 +10,6 @@
 
 .chat {
 	float: top;
-	margin: 10px;
 	height: 84%;
 	padding: 0px;
 	overflow: auto;
@@ -48,6 +47,7 @@
 .textbox {
 	float: left;
 	width: 85%;
+	padding: 10px;
 }
 
 #usertext {
