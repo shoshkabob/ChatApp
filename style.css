@@ -16,7 +16,6 @@
 }
 
 .umsg {
-	display: inline-block;
 	float: right;
 }
 
@@ -47,7 +46,7 @@
 .textbox {
 	float: left;
 	width: 85%;
-	padding: 10px;
+	margin: 10px;
 }
 
 #usertext {
