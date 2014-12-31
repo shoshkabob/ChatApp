@@ -43,10 +43,10 @@ client.addEventListener("open", function () {
 		chatBlurb.setAttribute("class", "user");
 		chatBlurb.style.color = txt.color;
 		chat.appendChild(chatBlurb);
-		var chatUser = document.createElement("div");
+		var chatUser = document.createElement("p");
 		chatUser.setAttribute("class", "uname");
 		chatUser.innerHTML = txt.name + ": ";
-		var chatMsg = document.createElement("div");
+		var chatMsg = document.createElement("p");
 		chatMsg.setAttribute("class", "umsg");
 		chatMsg.innerHTML = " " + msg;
 		chatBlurb.appendChild(chatUser);

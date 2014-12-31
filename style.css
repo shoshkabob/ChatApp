@@ -18,7 +18,6 @@
 
 .umsg {
 	display: inline;
-	float: right;
 }
 
 .uname {
@@ -30,9 +29,8 @@
 	position: fixed;
 	bottom: 10;
 	left: 10;
-	right: 10;
 	width: 100%;
-	padding: 10px;
+	padding-right: 10px;
 	height: 15%;
 	background-color: lightblue;
 }
