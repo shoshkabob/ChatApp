@@ -48,7 +48,7 @@ client.addEventListener("open", function () {
 		chatUser.innerHTML = txt.name + ": ";
 		var chatMsg = document.createElement("p");
 		chatMsg.setAttribute("class", "umsg");
-		chatMsg.innerHTML = msg;
+		chatMsg.innerHTML = " " + msg;
 		chatBlurb.appendChild(chatUser);
 		chatBlurb.appendChild(chatMsg);
 		if (msg.substr(0, 7) === "http://") {

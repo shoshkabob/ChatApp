@@ -17,11 +17,11 @@
 }
 
 .umsg {
-	display: inline-block;
+	display: inline;
 }
 
 .uname {
-	display: inline-block;
+	display: inline;
 	font-weight: bold;
 }
 
