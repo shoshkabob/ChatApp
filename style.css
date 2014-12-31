@@ -18,6 +18,7 @@
 
 .umsg {
 	display: inline;
+	float: right;
 }
 
 .uname {
