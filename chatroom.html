@@ -5,16 +5,24 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="online"></div>
-			<div class="chat"></div>
-			<footer class="input">
-				<div class="textbox">
-					<textarea id="usertext"></textarea>
+			<div class="sidebar">
+				<div class="mini">
+					<br>Users Online
 				</div>
-				<div class="send">
-					<button id="send">Send</button>
+				<p id="username"></p>
+				<ul class="online"></ul>
+			</div>
+			<div class="chatwrapper">
+				<div class="chat"></div>
+				<div class="input">
+					<div class="textbox">
+						<textarea id="usertext"></textarea>
+					</div>
+					<div class="send">
+						<button id="send">Send</button>
+					</div>
 				</div>
-			</footer>
+			</div>
 		</div>
 		<script src="client.js"></script>
 	</body>

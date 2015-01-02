@@ -1,19 +1,59 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.mini {
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	text-align: center;
+	color: white;
+	padding: 0px;
+	margin: 0px;
+	background-color: navy;
+	height: 50px;
+	
+}
+
+.sidebar {
+	float: left;
+	width: 150px;
+	background-color: #dbd5d5;
+	height: 100%;
+}
+
+.online {
+	padding: 10px;
+	text-align: left;
+}
+
+#username {
+	font-weight: bold;
+}
+
+.announce {
+	color: #a19c9c;
+}
+
+.chatwrapper {
+	margin-left: 160px;
+}
+
 .user {
 	background-color: white;
 	font-family: helvetica;
 	display: block;
-}
-
-.wrapper {
-	padding: 10px;
-	margin: 10px;
+	padding: 0px 5px 5px 5px;
 }
 
 .chat {
-	float: top;
-	height: 84%;
-	padding: 0px;
+	height: calc(100% - 100px);
+	padding: 10px 0px;
 	overflow: auto;
+	display: block;
 }
 
 .umsg {
@@ -26,20 +66,20 @@
 }
 
 .input {
-	position: fixed;
+	position: relative;
 	bottom: 0;
 	left: 0;
 	width: 100%;
 	padding: 10px;
-	height: 15%;
+	height: 100px;
 	background-color: lightblue;
+	display: block;
 }
 
 .send {
 	margin-left: 85%;
 	padding-left: 10px;
-	margin-right: 10px;
-	float: center;
+	text-align: center;
 }
 
 .textbox {
