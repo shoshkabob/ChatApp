@@ -32,7 +32,8 @@ client.addEventListener("open", function () {
 	});
 
 	function sendMessage(input) {
-		var msg = { name: currentUser.name, message: input, color: currentUser.color, conn: currentUser.conn };
+		var txt = input;
+		var msg = { name: currentUser.name, message: txt, color: currentUser.color, conn: currentUser.conn };
 		var sendMsg = JSON.stringify(msg);
 		client.send(sendMsg);
 	}
@@ -135,7 +136,7 @@ client.addEventListener("open", function () {
 			var words = txt.split(" ");
 			var phrase = [];
 			words.forEach(function (elem) {
-				if (elem === "has" || elem === "changed" || elem === || elem === "name" || elem === "to") {
+				if (elem === "has" || elem === "changed" || elem === "name" || elem === "to") {
 					phrase.push(elem);
 				}
 				var checkPhrase = phrase.join(" ");
