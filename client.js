@@ -56,15 +56,19 @@ client.addEventListener("open", function () {
 				client.send(announcement);
 				currentUser.name = userChange.value;
 				sidebar.replaceChild(userChange, username);
-				sendMessage();
+				sendMessage(null);
 			}
 		});
 	});
 
-	send.addEventListener("click", sendMessage(userInput));
+	function sendUserMessage() {
+		sendMessage(userInput);
+	}
+
+	send.addEventListener("click", sendUserMessage);
 	usertext.addEventListener("keypress", function (evt) {
 		if (evt.keyCode === 13) {
-			sendMessage(userInput);
+			sendUserMessage();
 		}	
 	});
 
