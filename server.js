@@ -17,7 +17,7 @@ server.on("connection", function (conn) {
 
 	conn.on("message", function (input) {
 		var info = JSON.parse(input);
-		if (typeof info === 'object' && info.hasOwnProperty(message) && info.message !== null) {
+		if (typeof info === 'object' && info.hasOwnProperty("message") && info.message !== null) {
 			var message = info.name + ": " + info.message;
 			var toSend = {name: info.name, message: info.message, color: info.color };
 			function sending() {
