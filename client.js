@@ -153,7 +153,7 @@ client.addEventListener("open", function () {
 	});
 
 	client.addEventListener("close", function () {
-		clients.splice(clients.indexOf(currentUser), 1);
+		usersOnline.splice(usersOnline.indexOf(currentUser), 1);
 	});
 });
 
