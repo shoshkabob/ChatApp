@@ -75,7 +75,7 @@ client.addEventListener("open", function () {
 
 	client.addEventListener("message", function (stuff) {
 		var txt = JSON.parse(stuff.data);
-		if (typeof txt === 'object' && txt.hasOwnProperty(message)) {
+		if (typeof txt === 'object' && txt.hasOwnProperty("message")) {
 			var msg = txt.message;
 			if (currentUser.name !== txt.name && usersOnline.indexOf(txt.name) > -1) {
 				var onlineUser = { name: txt.name, color: txt.color, conn: txt.conn };
