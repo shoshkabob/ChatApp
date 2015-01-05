@@ -1,7 +1,7 @@
 var client = new WebSocket("ws://shoshanah.princesspeach.nyc:3000");
+//var client = new WebSocket("ws://localhost:3000");
 
 var usertext = document.querySelector("#usertext");
-var userInput = usertext.value;
 var chat = document.querySelector(".chat");
 var send = document.querySelector("#send");
 var username = document.querySelector("#username");
@@ -28,12 +28,10 @@ client.addEventListener("open", function () {
 	usersOnline.forEach(function (elem) {
 		var thisUser = document.createElement("li");
 		thisUser.innerHTML = elem.name;
-
 	});
 
 	function sendMessage(input) {
-		var txt = input;
-		var msg = { name: currentUser.name, message: txt, color: currentUser.color, conn: currentUser.conn };
+		var msg = { name: currentUser.name, message: input, color: currentUser.color, conn: currentUser.conn };
 		var sendMsg = JSON.stringify(msg);
 		client.send(sendMsg);
 	}
@@ -46,23 +44,24 @@ client.addEventListener("open", function () {
 		var userChange = document.createElement("input");
 		userChange.setAttribute("type", "text");
 		var sidebar = document.querySelector(".sidebar");
-		sidebar.replaceChild(username, userChange);
+		sidebar.replaceChild(userChange, username);
 		userChange.innerHTML = username.innerHTML;
 		userChange.addEventListener("keypress", function (evt) {
 			if (evt.keyCode === 13) {
 				formerUserName = currentUser.name;
 				username.innerHTML = userChange.value;
 				var announcement = formerUserName + " has changed name to " + userChange.value;
-				console.log(announcement);
-				client.send(announcement);
+				var serial = {type: "announ", ann: announcement};
+				client.send(JSON.stringify(serial));
 				currentUser.name = userChange.value;
-				sidebar.replaceChild(userChange, username);
+				sidebar.replaceChild(username, userChange);
 				sendMessage(null);
 			}
 		});
 	});
 
 	function sendUserMessage() {
+		var userInput = usertext.value;
 		sendMessage(userInput);
 	}
 
@@ -75,7 +74,7 @@ client.addEventListener("open", function () {
 
 	client.addEventListener("message", function (stuff) {
 		var txt = JSON.parse(stuff.data);
-		if (typeof txt === 'object' && txt.hasOwnProperty("message")) {
+		if (txt.hasOwnProperty("message")) {
 			var msg = txt.message;
 			if (currentUser.name !== txt.name && usersOnline.indexOf(txt.name) > -1) {
 				var onlineUser = { name: txt.name, color: txt.color, conn: txt.conn };
@@ -132,27 +131,26 @@ client.addEventListener("open", function () {
 				}
 			}
 		}
-		else if (typeof txt === 'string') {
-			var words = txt.split(" ");
-			var phrase = [];
-			words.forEach(function (elem) {
-				if (elem === "has" || elem === "changed" || elem === "name" || elem === "to") {
-					phrase.push(elem);
-				}
-				var checkPhrase = phrase.join(" ");
-				if (checkPhrase === "has changed name to") {
-					var chatBlurb = document.createElement("div");
-					chatBlurb.setAttribute("class", "announce");
-					chat.appendChild(chatBlurb);
-					var announce = document.createElement("p");
-					announce.innerHTML = txt;
-					chatBlurb.appendChild(announce);
-				}
+		else if (txt.type === "announ") {
+			var chatBlurb = document.createElement("div");
+			chatBlurb.setAttribute("class", "announce");
+			chat.appendChild(chatBlurb);
+			var announce = document.createElement("p");
+			announce.innerHTML = txt.ann;
+			chatBlurb.appendChild(announce);
+		}
+		else if (txt.type === "list") {
+			var users = items;
+			users.forEach(function (elem) {
+				if ()
 			});
 		}
 	});
 
 	client.addEventListener("close", function () {
+		var announcement = currentUser.name + " has signed off";
+		var serial = {type: "announ", ann: announcement};
+		client.send(JSON.stringify(serial));
 		usersOnline.splice(usersOnline.indexOf(currentUser), 1);
 	});
 });

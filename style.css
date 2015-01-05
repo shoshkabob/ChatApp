@@ -25,6 +25,12 @@
 	height: 100%;
 }
 
+.sidebar p {
+	margin: 5px;
+	font-family: sans-serif;
+	font-size: 12px;
+}
+
 .online {
 	padding: 10px;
 	text-align: left;
@@ -32,10 +38,13 @@
 
 #username {
 	font-weight: bold;
+	font-family: 'helvetica', sans-serif;
+	font-size: 16px;
 }
 
 .announce {
 	color: #a19c9c;
+	font-family: 'helvetica', sans-serif;
 }
 
 .chatwrapper {

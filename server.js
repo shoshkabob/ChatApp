@@ -6,6 +6,12 @@ var msgHist = [];
 var x = 0;
 
 server.on("connection", function (conn) {
+//want to move User constructor to server side, then send user object to client side and store it *there* in onlineUsers, so that all clients will have this list
+//current model on client side doesn't actually take all the online users, as suspected
+//this requires a slight overhaul of the client side code, so attempt to figure out versioning
+
+//super mad at myself for sleeping/being out of it the day we were given to tweak this chat app, ngl
+
 
 	clients.push(conn);
 
@@ -17,7 +23,8 @@ server.on("connection", function (conn) {
 
 	conn.on("message", function (input) {
 		var info = JSON.parse(input);
-		if (typeof info === 'object' && info.hasOwnProperty("message") && info.message !== null) {
+
+		if (info.hasOwnProperty("message") && info.message !== null) {
 			var message = info.name + ": " + info.message;
 			var toSend = {name: info.name, message: info.message, color: info.color };
 			function sending() {
@@ -25,10 +32,12 @@ server.on("connection", function (conn) {
 				clients.forEach(function (cl) {
 					cl.send(sendMsg);
 				});
-				msgHist.push(JSON.stringify(toSend));
+				msgHist.push(sendMsg);
 			}
+
 			var arr = info.message.split(" ");
 			console.log(message);
+
 			if(arr.indexOf("kike") > -1 || arr.indexOf("kikes") > -1) {
 				toSend.message = "**this user has been banned**";
 				sending();
@@ -57,9 +66,26 @@ server.on("connection", function (conn) {
 				sending();
 			}
 		}
+		else if (info.hasOwnProperty("message") && info.message === null) {
+			if () {
+				clients.forEach(function (cl) {
+					if (cl !== conn) {
+						var announcement = info.name + " has joined the chat";
+						var serial = {type: "announ", ann: announcement};
+						cl.send(JSON.stringify(serial));
+					}
+					var userList = {type: "list", items: users};
+					cl.send(JSON.stringify(userList));
+				});
+
+			}
+		}
 		else {
-			var toSend = JSON.stringify(info);
+			if (info.type === "announ") {
+				console.log(info.ann);
+			}
 			clients.forEach(function (cl) {
+				var toSend = JSON.stringify(info);
 				cl.send(toSend);
 			});
 		}
